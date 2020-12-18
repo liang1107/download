@@ -2,6 +2,9 @@ package com.salesbox;
 
 import android.app.ActivityManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -51,6 +54,27 @@ public class KeepLiveService extends Service {
 //        //设置通知默认效果
 //        notification.flags = Notification.FLAG_SHOW_LIGHTS;
 //        startForeground(1, notification);
+//设置通知栏目
+//        Notification.Builder builder = new Notification.Builder(this.getApplicationContext())
+//                .setContentIntent(PendingIntent.getActivity(this, 0, intent, 0)) // 设置PendingIntent
+//                .setSmallIcon(R.mipmap.ic_launcher) // 设置状态栏内的小图标
+//                .setContentTitle(getResources().getString(R.string.app_name))
+//                .setContentText("前台服务！应用包活！...") // 设置上下文内容
+//                .setWhen(System.currentTimeMillis()); // 设置该通知发生的时间
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//            //修改安卓8.1以上系统报错
+//            NotificationChannel notificationChannel = new NotificationChannel("CHANNEL_ONE_ID", "CHANNEL_ONE_ID", NotificationManager.IMPORTANCE_MIN);
+//            notificationChannel.enableLights(false);//如果使用中的设备支持通知灯，则说明此通知通道是否应显示灯
+//            notificationChannel.setShowBadge(false);//是否显示角标
+//            notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
+//            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//            manager.createNotificationChannel(notificationChannel);
+//            builder.setChannelId("CHANNEL_ONE_ID");
+//        }
+//        Notification notification = builder.build(); // 获取构建好的Notification
+//        notification.defaults = Notification.DEFAULT_SOUND; //设置为默认的声音
+//        startForeground(1, notification);
+
         return Service.START_STICKY;
     }
 
