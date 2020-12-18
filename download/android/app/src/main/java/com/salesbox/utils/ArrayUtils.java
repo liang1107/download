@@ -108,8 +108,25 @@ public class ArrayUtils {
         }
         return false;
     }
-
-
+    /**
+     *判断APP是否在前台运行
+     * @param context
+     * @param
+     * @return
+     */
+    public static boolean isRunningForeground(Context context) {
+        ActivityManager activityManager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcessInfos = activityManager.getRunningAppProcesses();
+        // 枚举进程
+        for (ActivityManager.RunningAppProcessInfo appProcessInfo : appProcessInfos) {
+            if (appProcessInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                if (appProcessInfo.processName.equals(context.getApplicationInfo().processName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     /**
      * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序，和和intToBytes（）配套使用
      *

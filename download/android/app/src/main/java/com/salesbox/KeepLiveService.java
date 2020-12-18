@@ -11,6 +11,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 
+import com.salesbox.utils.ArrayUtils;
+
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -75,6 +77,8 @@ public class KeepLiveService extends Service {
                 }
                 else {
                     Log.e("MyTestService", "========程序已经运行了==========");
+
+
                 }
             }
         };
